@@ -29,21 +29,35 @@ class IconsArea extends StatelessWidget {
       WorkspaceIconsComponent(WorkspaceIconsModel(
           imageUrl: 'assets/images/icons/chrome_icon.png',
           name: 'Google\nChrome')),
-      WorkspaceIconsComponent(WorkspaceIconsModel(
-          imageUrl: 'assets/images/icons/chrome_icon.png',
-          name: 'Google\nChrome')),
     ];
     return Container(
       height: height - 40,
-      width: 100,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: list.length,
-            itemBuilder: (context, index) {
-              return list[index];
-            }),
+        child: Row(
+          children: [
+            Container(
+              width: 100,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: list.length,
+                  itemBuilder: (context, index) {
+                    return list[index];
+                  }),
+            ),
+            Container(
+              width: 100,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: list.length,
+                  itemBuilder: (context, index) {
+                    return list[index];
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
